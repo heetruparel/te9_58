@@ -1,0 +1,21 @@
+import numpy as np
+
+def calc_mean(numbers):
+    total_sum = sum(numbers)
+    count = len(numbers)
+    mean = total_sum / count
+    return mean
+
+arr = np.array([2, 4, 4, 4, 5, 5, 7, 9])
+
+mean = calc_mean(arr)
+
+n = len(arr)
+var = sum((num - mean) ** 2 for num in arr) / n
+
+print("Variance (manual calculation):", var)
+
+list_values = [2, 4, 4, 4, 5, 5, 7, 9]
+print("Variance (NumPy):", np.var(list_values))
+
+

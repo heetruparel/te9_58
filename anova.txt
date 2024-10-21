@@ -1,0 +1,47 @@
+import numpy as np
+import pandas as pd
+from scipy import stats
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+A = np.array([4,2,4,2])
+B = np.array([6,4,5,5])
+C = np.array([8,6,8,6])
+all = np.concatenate([A,B,C])
+
+print("Null Hypothesis : Mean of all groups are equal\n")
+
+meanA = np.mean(A)
+meanB = np.mean(B)
+meanC = np.mean(C)
+mean = np.mean(all)
+
+nA = len(A)
+nB = len(B)
+nC = len(C)
+
+SSB = nA * (meanA - mean) ** 2 + nB * (meanB - mean) ** 2 + nC * (meanC - mean) ** 2
+SSW = np.sum((A - meanA)**2) + np.sum((B - meanB)**2) + np.sum((C - meanC)**2)
+
+SST = SSB + SSW
+
+df_bet = 3 - 1
+df_within = len(all) - 3
+df_total = df_bet + df_within
+
+MSB = SSB/df_bet
+MSW = SSW/df_within
+
+F = MSB/MSW
+
+alpha = 0.05
+F_critical = stats.f.ppf(1 - alpha, df_bet, df_within)
+
+print(f"F value - {F}\n")
+print(f"F critical - {F_critical}\n")
+
+print
+if F > F_critical:
+    print("Reject null hypothesis")
+else:
+    print("Accept null hypothesis")

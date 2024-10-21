@@ -1,0 +1,15 @@
+def percentile(numbers):
+    n = len(numbers)
+    sort_num = sorted(numbers)
+    
+    q1_index = n // 4
+    q3_index = (3 * n) // 4
+    
+    q1 = sort_num[q1_index]
+    q3 = sort_num[q3_index]
+    
+    return q3 - q1
+
+numbers = [1, 3, 5, 7, 9, 11, 13]
+iqr = percentile(numbers)
+print("Interquartile Range:", iqr)

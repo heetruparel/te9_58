@@ -1,0 +1,11 @@
+import pandas as pd
+# Select a single column
+print("\nSingle column (Glucose):")
+print(df['Glucose'])
+# Select multiple columns
+print("\nMultiple columns (Glucose and Age):")
+print(df[['Glucose', 'Age']])
+# Apply a condition (Glucose > 180)
+
+print("\nRows where Glucose > 180:")
+print(df[df['Glucose'] > 180])

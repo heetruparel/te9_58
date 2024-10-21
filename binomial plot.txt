@@ -1,0 +1,116 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import scipy.stats as stats
+
+n = 10
+p = 0.80
+arr = np.arange(0,11)
+arr
+
+from scipy.stats import binom
+bi = binom.pmf(k=arr, n=n, p=p)
+bi
+
+# plot the distribution
+plt.bar(arr, bi)
+plt.title("Binomial: n=%i , p=%.2f" % (n, p), fontsize=15)
+plt.xlabel("Number of Successes")
+plt.ylabel("Probability of Successes")
+plt.show()
+
+bi[10]
+
+barl = plt.bar(arr, bi)
+plt.title("Binomial: n=%i , p=%.2f" % (n, p), fontsize=15)
+plt.xlabel("Number of Successes")
+plt.ylabel("Probability of Successes")
+for i in range(0, 8):
+barl[i].set_color("r")
+plt.show()
+
+binom.cdf(k=7, n=n, p=p)
+
+plt.figure(figsize=(15, 4))
+plt.subplot(131)
+binomial_70 = binom.pmf(arr, n, p=0.7)
+
+plt.bar(arr, binomial_70)
+plt.title("p=%.2f" % (0.7), fontsize=15)
+plt.xlabel("Number of Successes")
+plt.ylabel("Probability of Successes")
+plt.subplot(132)
+binomial_80 = binom.pmf(arr, n, p=0.8)
+
+plt.bar(arr, binomial_80)
+
+3
+
+plt.title("p=%.2f" % (0.8), fontsize=15)
+plt.xlabel("Number of Successes")
+plt.ylabel("Probability of Successes")
+plt.subplot(133)
+binomial_90 = binom.pmf(arr, n, p=0.9)
+
+plt.bar(arr, binomial_90)
+plt.title("p=%.2f" % (0.9), fontsize=15)
+plt.xlabel("Number of Successes")
+plt.ylabel("Probability of Successes")
+plt.tight_layout(w_pad=5)
+
+# Exactly 8 fails the inspection
+p = 0.6
+n = 15
+k = 8
+binomial = stats.binom.pmf(k, n, p)
+print('Probability exactly 8 fail the inspection is %1.5f' % binomial)
+
+# Binommial Distribution
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import binom
+n = 20 # number of trials
+p = 0.4 # probability of success
+# Create an array of possible outcomes
+x = np.arange(0, n+1)
+# Calculate the binomial distribution PMF
+binom_pmf = binom.pmf(x, n, p)
+# Output the calculated PMF values
+for i in range(len(x)):
+print(f"Number of Successes: {x[i]}, Probability: {binom_pmf[i]:.4f}")
+print('\n')
+# Plot the distribution
+plt.figure(figsize=(10, 6))
+plt.bar(x, binom_pmf, color='orange', edgecolor='black')
+plt.title('Binomial Distribution (n=20, p=0.4)')
+plt.xlabel('Number of Successes')
+plt.ylabel('Probability')
+plt.grid(True)
+plt.show()
+
+from scipy.stats import poisson
+# Parameters
+
+8
+
+lambda_ = 2 # average rate (
+)
+# Create an array of possible outcomes
+x = np.arange(0, 15)
+# Calculate the Poisson distribution PMF
+poisson_pmf = poisson.pmf(x, lambda_)
+# Output the calculated PMF values
+for i in range(len(x)):
+print(f"Number of Events: {x[i]}, Probability: {poisson_pmf[i]:.4f}")
+print('\n')
+# Plot the distribution
+plt.figure(figsize=(10, 6))
+plt.bar(x, poisson_pmf, color='red', edgecolor='black')
+plt.title('Poisson Distribution (
+=2)')
+plt.xlabel('Number of Events')
+plt.ylabel('Probability')
+plt.grid(True)
+plt.show()
+

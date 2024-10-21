@@ -1,0 +1,16 @@
+def calc_mode(numbers):
+    freq_dict = {}
+    for number in numbers:
+        if number in freq_dict:
+            freq_dict[number] += 1
+        else:
+            freq_dict[number] = 1
+
+    max_freq = max(freq_dict.values())
+    mode = [number for number, freq in freq_dict.items() if freq == max_freq]
+    print("Maximum Frequency: ", max_freq)
+    return mode
+
+numbers = [4, 4, 4, 4, 6, 6, 6, 6, 6, 6, 8, 8, 8, 8, 9, 10, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+mode = calc_mode(numbers)
+print("Mode:", mode)

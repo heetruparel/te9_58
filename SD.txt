@@ -1,0 +1,22 @@
+import numpy as np
+import math
+
+def calc_mean(numbers):
+    total_sum = sum(numbers)
+    count = len(numbers)
+    mean = total_sum / count
+    return mean
+
+arr = np.array([2, 4, 4, 4, 5, 5, 7, 9])
+
+mean = calc_mean(arr)
+
+n = len(arr)
+var = sum((num - mean) ** 2 for num in arr) / n
+
+sd = math.sqrt(var)
+
+print("Standard Deviation (manual calculation):", sd)
+
+list_values = [2, 4, 4, 4, 5, 5, 7, 9]
+print("Standard Deviation (NumPy):", np.std(list_values))

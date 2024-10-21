@@ -1,0 +1,8 @@
+import pandas as pd
+# Check for missing values
+print("\nMissing values in DataFrame:")
+print(df.isnull())
+# Drop rows with missing values
+df_dropped = df.dropna()
+print("\nDataFrame after dropping rows with missing values:")
+print(df_dropped)

@@ -1,0 +1,44 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df = pd.read_csv('/content/t20.csv')
+df
+
+df.head(5)
+
+df.info()
+
+df.describe()
+
+sns.histplot(x=df.head(10)["Runs"], y = df.head(10)["Player"], kde=True,␣
+↪color='blue', bins=30)
+plt.show()
+
+plt.hist(df.head(10)["Runs"])
+plt.show()
+
+sns.scatterplot(x=df.head(10)["Span"], y=df.head(10)["Mat"], hue=df.
+↪head(10)["Player"])
+plt.show()
+
+sns.histplot(df.head(10)["Runs"],kde=True, color='blue', bins = 20)
+plt.xlabel("Runs")
+plt.ylabel("Frequency")
+plt.title("Histogram of Runs")
+plt.show()
+
+sns.lineplot(x=df.head(10)['Mat'], y=df.head(10)['Runs'])
+
+sns.scatterplot(x='Inns', y='Runs', data=df.head(10))
+
+sns.boxplot(x=df.head(10)['Inns'], y=df.head(10)['Runs'])
+
+sns.countplot(data=df.head(10), x='50', hue='50', legend=False)
+plt.title('Count of players by 50s')
+plt.show()
+
+plt.pie(x=df['Inns'].head(10), labels=df['Runs'].head(10), autopct='%1.1f%%')
+plt.title("Pie Chart of Inns vs Runs for Top 10 Players")
+plt.show()
+

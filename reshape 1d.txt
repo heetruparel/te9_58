@@ -1,0 +1,10 @@
+import numpy as np
+one_d_array = np.array([1, 2, 3, 4, 5, 6])
+# Reshape the array to 3x2
+reshaped_array = one_d_array.reshape(3, 2)
+print("\nReshaped array (3x2):")
+print(reshaped_array)
+# Transpose the reshaped array
+transposed_array = reshaped_array.T
+print("\nTransposed array:")
+print(transposed_array)

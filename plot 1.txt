@@ -1,0 +1,95 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+
+df = pd.read_csv('/content/t20.csv')
+df
+
+df.head(5)
+
+# Scatter Plot
+plt.figure(figsize=(8, 5))
+sns.scatterplot(x='Runs', y='HS', data=df.head(10))
+plt.title('Runs vs High Score')
+plt.show()
+
+# Box Plot
+plt.figure(figsize=(12, 6))
+sns.boxplot(x='Player', y='Runs', data=df.head(40))
+plt.title('Runs Distribution by Player')
+plt.xticks(rotation=90)
+plt.show()
+
+# Count Plot
+plt.figure(figsize=(12, 6))
+sns.countplot(x='Player', hue='Inns', data=df.head(10))
+plt.title('Inns by Player')
+plt.xticks(rotation=90)
+plt.show()
+
+# Line Plot
+plt.figure(figsize=(8, 5))
+sns.lineplot(x='Span', y='Runs', data=df.head(10))
+plt.title('Runs Over Career Span')
+plt.show()
+
+# Correlation Analysis
+# Replace non-numeric values with NaN
+numeric_df = df[['Runs', 'HS', 'Ave', 'BF', 'SR', '100', '50', '0', '4s',␣
+↪'6s']].replace('-', np.nan)
+# Convert columns to numeric
+numeric_df = numeric_df.apply(pd.to_numeric, errors='coerce')
+# Calculate the correlation matrix
+plt.figure(figsize=(10, 6))
+sns.heatmap(numeric_df.corr(), annot=True, cmap='coolwarm', linewidths=0.5)
+plt.title('Correlation Heatmap Between Numerical Variables')
+plt.show()
+
+# Pair Plot
+# Convert selected columns to numeric, handling non-numeric values
+df[['Runs', 'HS', 'Ave']] = df[['Runs', 'HS', 'Ave']].apply(pd.to_numeric,␣
+↪errors='coerce')
+# Drop rows with any NaN values
+df = df.dropna(subset=['Runs', 'HS', 'Ave'])
+# Generate the pair plot
+sns.pairplot(df[['Runs', 'HS', 'Ave']])
+plt.show()
+
+# Bar Plot
+plt.figure(figsize=(12, 6))
+sns.barplot(x='Player', y='Runs', data=df.head(20), estimator='mean')
+plt.title('Average Runs by Player')
+plt.xticks(rotation=90)
+plt.show()
+
+# Heatmap
+plt.figure(figsize=(8, 5))
+sns.heatmap(df[['Runs', 'HS', 'Ave']].corr(), annot=True, cmap='coolwarm')
+plt.title('Heatmap of Runs, HS, and Average')
+plt.show()
+
+# Box Plot Grouped by Categorical Variable
+plt.figure(figsize=(8, 5))
+sns.boxplot(x='NO', y='Runs', data=df.head(50))
+plt.title('Runs Distribution by Number of Not Outs')
+plt.show()
+
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+# Sample Data
+house_size = [1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100]
+price = [250000, 270000, 280000, 300000, 320000, 330000, 350000, 370000,␣
+↪380000, 400000]
+# Creating DataFrame
+df = pd.DataFrame({'House Size (sqft)': house_size, 'Price ($)': price})
+# Checking for missing values
+missing_values = df.isnull().sum()
+print("Missing Values:\n", missing_values)
+
+# Checking for outliers using a boxplot
+sns.boxplot(data=df)
+plt.show()

@@ -1,0 +1,27 @@
+def percentile(numbers):
+    n = len(numbers)
+    sort_num = sorted(numbers)
+
+    q1_index = (n + 1) * 0.25
+    q2_index = (n + 1) * 0.50
+    q3_index = (n + 1) * 0.75
+
+    def interpolate(sorted_numbers, index):
+        if index.is_integer():
+            return sorted_numbers[int(index) - 1]
+        else:
+            lower = sorted_numbers[int(index) - 1]
+            upper = sorted_numbers[int(index)]
+            fraction = index % 1
+            return lower + fraction * (upper - lower)
+    
+    q1 = interpolate(sort_num, q1_index)
+    q2 = interpolate(sort_num, q2_index)
+    q3 = interpolate(sort_num, q3_index)
+
+    print("25th percentile:", q1)
+    print("50th percentile (Median):", q2)
+    print("75th percentile:", q3)
+    
+numbers = [20, 2, 7, 1, 34]
+percentile(numbers)
